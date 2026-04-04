@@ -8930,3 +8930,201 @@ body.is-scrolling .keyboard-hint:not(.is-dismissed) {
     gap: 14px;
   }
 }
+
+/* Responsive stabilization: mobile/tablet use readable stacked sections */
+@media (max-width: 900px) {
+  [data-reveal],
+  [data-reveal="mask"],
+  [data-reveal="drift"] {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+    transition: none !important;
+  }
+
+  .story-copy > *,
+  .story-act.is-current .story-copy > *,
+  .story-signals span,
+  .story-act.is-current .story-signals span {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .story-act,
+  .story-act-reverse,
+  .story-act-copy-right {
+    gap: 20px;
+  }
+
+  .story-visual,
+  .story-act.story-act-reverse .story-visual,
+  .story-act.story-act-copy-right .story-visual {
+    min-height: 0;
+    overflow: visible;
+  }
+
+  .story-visual::before,
+  .story-act.is-current .story-visual::before {
+    opacity: .62;
+    transform: none;
+    animation: none;
+  }
+
+  .story-visual-stack,
+  .story-act-reverse .story-visual-stack,
+  .story-act-copy-right .story-visual-stack {
+    width: 100%;
+    min-height: 0;
+    margin: 0;
+    animation: none;
+    filter: none;
+  }
+
+  .story-shot,
+  .story-shot-main,
+  .story-act-reverse .story-shot-main,
+  .story-act-copy-right .story-shot-main,
+  .story-act.is-current .story-shot-main,
+  .story-act.is-current.story-act-reverse .story-shot-main,
+  .story-act.is-current.story-act-copy-right .story-shot-main {
+    position: relative;
+    top: auto;
+    right: 0 !important;
+    bottom: auto;
+    left: 0 !important;
+    display: block;
+    width: 100%;
+    max-width: none;
+    aspect-ratio: 1280 / 760;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    animation: none !important;
+    margin: 0 auto;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 28px 72px rgba(0, 0, 0, .34);
+  }
+
+  .story-shot img,
+  .story-shot-main img,
+  .story-shot-main-dashboard img,
+  .story-shot-main-module img,
+  .story-shot-main-planning img {
+    transform: none !important;
+    border-radius: inherit;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .story-shot-float,
+  .story-shot-float-top,
+  .story-shot-float-bottom,
+  .story-shot-float-dashboard,
+  .story-shot-float-notes,
+  .story-shot-float-tasks {
+    display: none !important;
+  }
+
+  .showcase-stage-shell {
+    gap: 20px;
+    min-height: 0;
+  }
+
+  .section-showcase .hero-stage {
+    display: block;
+    min-height: 0;
+    padding: 0 0 58px;
+    overflow: visible;
+  }
+
+  .section-showcase .hero-mockup-wrap {
+    width: 100%;
+    min-height: 0;
+    margin: 0;
+  }
+
+  .section-showcase .hero-mockup-wrap::after {
+    inset: 30% 10% -18% 10%;
+    opacity: .8;
+  }
+
+  .hero-screen-stack {
+    min-height: 0;
+  }
+
+  .section-showcase .hero-screen,
+  .section-showcase .hero-screen.is-current,
+  .section-showcase .hero-screen.is-next,
+  .section-showcase .hero-screen.is-prev,
+  .section-showcase .hero-screen.is-back {
+    position: relative;
+    top: auto;
+    right: 0 !important;
+    bottom: auto;
+    left: 0 !important;
+    display: none;
+    width: 100%;
+    aspect-ratio: 1280 / 740;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    margin: 0 auto;
+    box-shadow: 0 32px 84px rgba(0, 0, 0, .34);
+    pointer-events: auto;
+  }
+
+  .section-showcase .hero-screen.is-current {
+    display: block;
+  }
+
+  .section-showcase .hero-screen img {
+    clip-path: none;
+    transform: none !important;
+  }
+
+  .showcase-arrow {
+    top: auto;
+    bottom: 10px;
+  }
+}
+
+@media (max-width: 640px) {
+  .story-act,
+  .story-act-reverse,
+  .story-act-copy-right {
+    gap: 16px;
+  }
+
+  .story-shot,
+  .story-shot-main,
+  .story-act-reverse .story-shot-main,
+  .story-act-copy-right .story-shot-main,
+  .story-act.is-current .story-shot-main,
+  .story-act.is-current.story-act-reverse .story-shot-main,
+  .story-act.is-current.story-act-copy-right .story-shot-main {
+    aspect-ratio: 1.46;
+    border-radius: 18px;
+    box-shadow: 0 22px 56px rgba(0, 0, 0, .3);
+  }
+
+  .section-showcase .hero-stage {
+    padding-bottom: 54px;
+  }
+
+  .section-showcase .hero-screen,
+  .section-showcase .hero-screen.is-current,
+  .section-showcase .hero-screen.is-next,
+  .section-showcase .hero-screen.is-prev,
+  .section-showcase .hero-screen.is-back {
+    aspect-ratio: 1.46;
+    border-radius: 18px;
+  }
+
+  .showcase-copy-panel {
+    padding: 18px 16px;
+  }
+}
