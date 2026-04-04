@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Nunito:wght@400;500;600;700;800&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=20260404d" />
 </head>
 <body>
   <div class="site-glow site-glow-a" aria-hidden="true"></div>
@@ -71,7 +71,10 @@
             <span class="hero-badge hero-badge-depth-far hero-badge-l">SEM</span>
 
             <figure class="hero-overlay hero-overlay-main">
-              <img src="assets/screens/dashboard-overview.png" alt="Syllabus Dashboard-Übersicht" />
+              <picture>
+                <source media="(max-width: 900px)" srcset="assets/screens/dashboard-overview-hero-mobile.png" />
+                <img src="assets/screens/dashboard-overview.png" alt="Syllabus Dashboard-Übersicht" />
+              </picture>
             </figure>
 
           </div>
