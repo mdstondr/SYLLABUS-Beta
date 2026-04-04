@@ -8968,22 +8968,68 @@ body.is-scrolling .keyboard-hint:not(.is-dismissed) {
   .hero-visual {
     min-height: clamp(300px, 58vw, 420px);
     width: 100%;
+    margin-top: -18px;
+    margin-bottom: -22px;
+    overflow: visible;
+    isolation: isolate;
+    -webkit-mask-image: radial-gradient(ellipse 92% 82% at 54% 48%, #000 40%, rgba(0,0,0,.94) 56%, rgba(0,0,0,.62) 72%, transparent 100%);
+    mask-image: radial-gradient(ellipse 92% 82% at 54% 48%, #000 40%, rgba(0,0,0,.94) 56%, rgba(0,0,0,.62) 72%, transparent 100%);
+  }
+
+  .hero-visual::before {
+    content: "";
+    position: absolute;
+    inset: -8% -6% 18% -8%;
+    z-index: 0;
+    background:
+      radial-gradient(circle at 70% 42%, rgba(126,231,200,.12) 0%, rgba(126,231,200,0) 54%),
+      radial-gradient(circle at 22% 74%, rgba(143,203,255,.1) 0%, rgba(143,203,255,0) 48%);
+    filter: blur(28px);
+    pointer-events: none;
+  }
+
+  .hero-visual::after {
+    content: "";
+    position: absolute;
+    inset: 8% -4% -18% -4%;
+    z-index: 1;
+    background: linear-gradient(180deg, rgba(7,9,12,0) 0%, rgba(7,9,12,.08) 34%, rgba(7,9,12,.42) 62%, rgba(7,9,12,.88) 88%, rgba(7,9,12,1) 100%);
+    pointer-events: none;
   }
 
   .hero-visual-grid {
-    inset: 8% 4% 10% 4%;
+    inset: 4% -2% 4% -2%;
+    opacity: .024;
+    transform: perspective(1200px) rotateY(-10deg) rotateX(2deg) rotateZ(-2deg);
   }
 
   .hero-stage-stack {
     width: min(100%, 680px);
     min-height: inherit;
+    position: relative;
+    z-index: 2;
+    filter: drop-shadow(0 24px 58px rgba(0, 0, 0, .24));
+  }
+
+  .hero-stage-stack::after {
+    content: none;
   }
 
   .hero-overlay-main {
-    top: 14%;
+    top: 16%;
     left: 50%;
-    width: min(92%, 620px);
-    transform: translate3d(-50%, 0, -40px) rotateX(10deg) rotateY(-16deg) rotateZ(-2deg) scale(1);
+    width: min(84%, 540px);
+    border-radius: 18px;
+    background: transparent;
+    opacity: .92;
+    filter: saturate(.98) brightness(.96);
+    transform: translate3d(-50%, 0, 0) rotateX(6deg) rotateY(-9deg) rotateZ(-1deg) scale(.99);
+  }
+
+  .hero-overlay-main img {
+    box-shadow: 0 24px 64px rgba(0, 0, 0, .22);
+    clip-path: inset(0 round 18px);
+    transform: scale(1.04) translate3d(0, -.4%, 0);
   }
 
   .hero-badge-a {
@@ -8996,6 +9042,15 @@ body.is-scrolling .keyboard-hint:not(.is-dismissed) {
 
   .hero-badge-f {
     left: 6%;
+  }
+
+  .hero-badge-d,
+  .hero-badge-e,
+  .hero-badge-g,
+  .hero-badge-i,
+  .hero-badge-k,
+  .hero-badge-l {
+    display: none;
   }
 
   .section-head {
@@ -9205,16 +9260,76 @@ body.is-scrolling .keyboard-hint:not(.is-dismissed) {
   }
 
   .hero-visual {
-    min-height: 248px;
+    min-height: 236px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: -14px;
+    margin-bottom: -18px;
+    -webkit-mask-image: radial-gradient(ellipse 96% 86% at 54% 46%, #000 38%, rgba(0,0,0,.92) 54%, rgba(0,0,0,.5) 70%, transparent 100%);
+    mask-image: radial-gradient(ellipse 96% 86% at 54% 46%, #000 38%, rgba(0,0,0,.92) 54%, rgba(0,0,0,.5) 70%, transparent 100%);
+  }
+
+  .hero-visual-grid {
+    display: none;
+  }
+
+  .hero-visual-glow-a {
+    width: 240px;
+    height: 240px;
+    top: 8%;
+    left: 2%;
+    opacity: .7;
+  }
+
+  .hero-visual-glow-b {
+    width: 320px;
+    height: 320px;
+    right: -10%;
+    bottom: -10%;
+    opacity: .62;
   }
 
   .hero-stage-stack {
-    width: 100%;
-    min-height: 248px;
+    width: min(86%, 320px);
+    min-height: 236px;
+    margin: 0 auto;
   }
 
   .hero-overlay-main {
-    width: min(100%, 330px);
+    top: 12%;
+    width: min(92%, 286px);
+    border-radius: 16px;
+    opacity: .96;
+    transform: translate3d(-50%, 0, 0) rotateX(4deg) rotateY(-6deg) rotateZ(-.8deg) scale(1);
+  }
+
+  .hero-overlay-main img {
+    clip-path: inset(0 round 16px);
+    transform: scale(1.045) translate3d(0, -.25%, 0);
+  }
+
+  .hero-badge-a,
+  .hero-badge-b,
+  .hero-badge-f {
+    padding: 6px 9px;
+    border-radius: 12px;
+    font-size: .56rem;
+  }
+
+  .hero-badge-a {
+    top: 12%;
+    left: 6%;
+  }
+
+  .hero-badge-b {
+    top: 8%;
+    right: 2%;
+  }
+
+  .hero-badge-f {
+    top: 18%;
+    left: -1%;
   }
 
   .story-act,
