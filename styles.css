@@ -8989,18 +8989,11 @@ body.is-scrolling .keyboard-hint:not(.is-dismissed) {
   }
 
   .hero-visual::after {
-    content: "";
-    position: absolute;
-    inset: 8% -4% -18% -4%;
-    z-index: 1;
-    background: linear-gradient(180deg, rgba(7,9,12,0) 0%, rgba(7,9,12,.08) 34%, rgba(7,9,12,.42) 62%, rgba(7,9,12,.88) 88%, rgba(7,9,12,1) 100%);
-    pointer-events: none;
+    content: none;
   }
 
   .hero-visual-grid {
-    inset: 4% -2% 4% -2%;
-    opacity: .024;
-    transform: perspective(1200px) rotateY(-10deg) rotateX(2deg) rotateZ(-2deg);
+    display: none;
   }
 
   .hero-stage-stack {
@@ -9018,18 +9011,21 @@ body.is-scrolling .keyboard-hint:not(.is-dismissed) {
   .hero-overlay-main {
     top: 16%;
     left: 50%;
-    width: min(84%, 540px);
-    border-radius: 18px;
+    width: min(78%, 500px);
+    border-radius: 22px;
     background: transparent;
-    opacity: .92;
-    filter: saturate(.98) brightness(.96);
-    transform: translate3d(-50%, 0, 0) rotateX(6deg) rotateY(-9deg) rotateZ(-1deg) scale(.99);
+    opacity: .94;
+    filter: none;
+    transform: translate3d(-50%, 0, 0) rotateX(5deg) rotateY(-7deg) rotateZ(-.8deg) scale(1);
   }
 
   .hero-overlay-main img {
-    box-shadow: 0 24px 64px rgba(0, 0, 0, .22);
-    clip-path: inset(0 round 18px);
-    transform: scale(1.04) translate3d(0, -.4%, 0);
+    box-shadow: 0 24px 64px rgba(0, 0, 0, .2);
+    clip-path: none;
+    object-position: 60% 18%;
+    -webkit-mask-image: radial-gradient(ellipse 86% 82% at 56% 50%, #000 42%, rgba(0,0,0,.95) 58%, rgba(0,0,0,.72) 72%, transparent 100%);
+    mask-image: radial-gradient(ellipse 86% 82% at 56% 50%, #000 42%, rgba(0,0,0,.95) 58%, rgba(0,0,0,.72) 72%, transparent 100%);
+    transform: scale(1.12) translate3d(3%, -.8%, 0);
   }
 
   .hero-badge-a {
@@ -9298,15 +9294,17 @@ body.is-scrolling .keyboard-hint:not(.is-dismissed) {
 
   .hero-overlay-main {
     top: 12%;
-    width: min(92%, 286px);
-    border-radius: 16px;
-    opacity: .96;
-    transform: translate3d(-50%, 0, 0) rotateX(4deg) rotateY(-6deg) rotateZ(-.8deg) scale(1);
+    width: min(80%, 266px);
+    border-radius: 18px;
+    opacity: .98;
+    transform: translate3d(-50%, 0, 0) rotateX(3deg) rotateY(-4deg) rotateZ(-.5deg) scale(1);
   }
 
   .hero-overlay-main img {
-    clip-path: inset(0 round 16px);
-    transform: scale(1.045) translate3d(0, -.25%, 0);
+    object-position: 62% 18%;
+    -webkit-mask-image: radial-gradient(ellipse 88% 84% at 58% 50%, #000 44%, rgba(0,0,0,.94) 60%, rgba(0,0,0,.62) 76%, transparent 100%);
+    mask-image: radial-gradient(ellipse 88% 84% at 58% 50%, #000 44%, rgba(0,0,0,.94) 60%, rgba(0,0,0,.62) 76%, transparent 100%);
+    transform: scale(1.16) translate3d(6%, -.6%, 0);
   }
 
   .hero-badge-a,
