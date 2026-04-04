@@ -4408,6 +4408,13 @@ body.is-scrolling .keyboard-hint:not(.is-dismissed) {
   margin-bottom: 0;
 }
 
+.download-unavailable-note {
+  margin: 0;
+  color: rgba(245,247,251,.72);
+  font-size: .88rem;
+  line-height: 1.5;
+}
+
 .download-film .download-actions .btn {
   min-width: 220px;
   justify-content: center;
