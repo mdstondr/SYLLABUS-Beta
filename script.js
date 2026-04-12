@@ -2,6 +2,7 @@
   'use strict';
 
   const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const desktopSceneMinWidth = 1100;
 
   const body = document.body;
   const header = document.getElementById('site-header');
@@ -10,6 +11,7 @@
   let scrollSyncFrame = 0;
   let scrollPauseTimer = null;
   let scrollMotionPaused = false;
+  let resizeStateTimer = null;
 
   function setScrollMotionPaused(paused) {
     if (scrollMotionPaused === paused) return;
@@ -45,11 +47,22 @@
     header.classList.toggle('hero-passed', heroBottom <= headerThreshold);
   }
 
+  function markResizeActivity() {
+    body?.classList.add('is-resizing');
+    window.clearTimeout(resizeStateTimer);
+    resizeStateTimer = window.setTimeout(() => {
+      body?.classList.remove('is-resizing');
+    }, reducedMotionQuery.matches ? 80 : 160);
+  }
+
   window.addEventListener('scroll', () => {
     markScrollActivity();
     scheduleHeaderSync();
   }, { passive: true });
-  window.addEventListener('resize', scheduleHeaderSync);
+  window.addEventListener('resize', () => {
+    markResizeActivity();
+    scheduleHeaderSync();
+  }, { passive: true });
   syncHeaderScrollState();
 
   if (keyboardHint) {
@@ -111,7 +124,7 @@
       return 'perspective(1400px) rotateX(5deg) rotateY(-6deg) rotateZ(-1.1deg)';
     }
 
-    if (window.innerWidth <= 900) {
+    if (window.innerWidth <= desktopSceneMinWidth) {
       return 'perspective(2000px) rotateX(7deg) rotateY(-10deg) rotateZ(-1.6deg)';
     }
 
@@ -150,7 +163,7 @@
     }
 
     heroStageShell.addEventListener('mousemove', (event) => {
-      if (window.innerWidth < 900 || reducedMotionQuery.matches || scrollMotionPaused) return;
+      if (window.innerWidth < desktopSceneMinWidth || reducedMotionQuery.matches || scrollMotionPaused) return;
 
       heroHoverActive = true;
       heroAtRest = false;
@@ -192,7 +205,7 @@
           !heroHoverActive &&
           !scrollMotionPaused &&
           heroMotionVisible &&
-          window.innerWidth >= 900 &&
+          window.innerWidth >= desktopSceneMinWidth &&
           !document.hidden
         ) {
           heroFloatAngle += 0.0085;
@@ -513,7 +526,7 @@
     }
 
     showcaseHoverZone.addEventListener('mousemove', (event) => {
-      if (window.innerWidth < 900 || reducedMotionQuery.matches || scrollMotionPaused) return;
+      if (window.innerWidth < desktopSceneMinWidth || reducedMotionQuery.matches || scrollMotionPaused) return;
 
       showcasePointerX = event.clientX;
       showcasePointerY = event.clientY;
@@ -558,7 +571,7 @@
       showcaseHoverZone.addEventListener('mouseleave', () => {
       showcaseHovered = false;
 
-      if (window.innerWidth < 900 || reducedMotionQuery.matches) {
+      if (window.innerWidth < desktopSceneMinWidth || reducedMotionQuery.matches) {
         if (showcaseMockup) showcaseMockup.style.transform = '';
         if (showcaseCopyPanel) showcaseCopyPanel.style.transform = '';
         showcaseAtRest = true;
@@ -571,7 +584,7 @@
           !showcaseHovered &&
           !scrollMotionPaused &&
           showcaseMotionVisible &&
-          window.innerWidth >= 900 &&
+          window.innerWidth >= desktopSceneMinWidth &&
           !document.hidden
         ) {
           const drift = getShowcaseGlobalDrift();
@@ -626,6 +639,15 @@
       }
     });
 
+    window.addEventListener('resize', () => {
+      if (window.innerWidth < desktopSceneMinWidth) {
+        if (showcaseMockup) showcaseMockup.style.transform = '';
+        if (showcaseCopyPanel) showcaseCopyPanel.style.transform = '';
+        showcaseHovered = false;
+        showcaseAtRest = true;
+      }
+    }, { passive: true });
+
     startShowcaseAutoRotate();
   }
 
@@ -655,6 +677,11 @@
     const storyRatios = new Map(storyActs.map((act, index) => [act, index === 0 ? 1 : 0]));
 
     const syncCurrentStoryAct = () => {
+      if (window.innerWidth <= desktopSceneMinWidth) {
+        storyActs.forEach((act) => act.classList.add('is-current'));
+        return;
+      }
+
       const [nextAct] = [...storyRatios.entries()].sort((a, b) => b[1] - a[1])[0] || [];
       setCurrentStoryAct(nextAct || storyActs[0]);
     };
@@ -675,6 +702,8 @@
     } else {
       setCurrentStoryAct(storyActs[0]);
     }
+
+    window.addEventListener('resize', syncCurrentStoryAct, { passive: true });
   }
 
   storyVisuals.forEach((visual) => {
@@ -682,7 +711,7 @@
     if (!stack) return;
 
     visual.addEventListener('mousemove', (event) => {
-      if (window.innerWidth < 900 || reducedMotionQuery.matches) return;
+      if (window.innerWidth < desktopSceneMinWidth || reducedMotionQuery.matches) return;
 
       const rect = visual.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
