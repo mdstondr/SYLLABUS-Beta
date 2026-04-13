@@ -11942,3 +11942,246 @@ body.is-resizing .download-orb {
     margin-right: -20px;
   }
 }
+
+/* -- PHONE UX PASS ------------------------------------------------------ */
+@media (max-width: 480px) {
+  .hero {
+    --hero-visual-scale: clamp(.46, calc(.18 + .08vw), .62);
+    padding-top: 72px;
+    padding-bottom: 18px;
+  }
+
+  .hero-layout {
+    min-height: clamp(360px, 124vw, 470px);
+  }
+
+  .hero-content {
+    top: 52%;
+    left: 12px;
+    gap: 10px;
+    max-width: min(80vw, 250px);
+  }
+
+  .hero-content h1 {
+    max-width: 6.9ch;
+    font-size: clamp(1.58rem, 8.4vw, 1.96rem);
+    letter-spacing: -.05em;
+  }
+
+  .hero-content h1 span {
+    white-space: normal;
+    text-wrap: balance;
+  }
+
+  .hero-subtitle {
+    max-width: 20ch;
+    font-size: .84rem;
+    line-height: 1.42;
+  }
+
+  .hero-overlay-main {
+    top: 12%;
+    left: 44%;
+    width: min(70%, 320px);
+    opacity: .78;
+  }
+
+  .hero-badge {
+    display: none;
+  }
+
+  .hero-badge-a,
+  .hero-badge-b,
+  .hero-badge-g {
+    display: inline-flex;
+  }
+
+  .hero-badge-a {
+    top: 16%;
+    left: 44%;
+  }
+
+  .hero-badge-b {
+    top: 15%;
+    right: 8%;
+  }
+
+  .hero-badge-g {
+    top: 58%;
+    left: 58%;
+  }
+
+  .section-head {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+
+  .section-head h2 {
+    max-width: 12ch;
+    font-size: clamp(1.5rem, 7.2vw, 2rem);
+  }
+
+  .section-head-copy {
+    max-width: 34ch;
+    font-size: .86rem;
+    line-height: 1.5;
+  }
+
+  .story-act,
+  .story-act-reverse,
+  .story-act-copy-right {
+    gap: 12px;
+    padding: 10px 0 14px;
+  }
+
+  .story-copy h3 {
+    font-size: clamp(1.56rem, 7.8vw, 2rem);
+  }
+
+  .story-copy > p:not(.story-count) {
+    font-size: .9rem;
+    line-height: 1.5;
+  }
+
+  .section-showcase {
+    --showcase-scene-scale: clamp(.46, calc(.2 + .06vw), .6);
+    padding-top: 40px;
+  }
+
+  .showcase-stage-shell {
+    min-height: clamp(340px, 112vw, 460px);
+  }
+
+  .showcase-copy-panel {
+    top: 42%;
+    left: 10px;
+    width: min(62vw, 240px);
+    min-height: 220px;
+    padding: 12px;
+    border-radius: 20px;
+  }
+
+  .showcase-copy-count {
+    font-size: clamp(1.8rem, 8vw, 2.5rem);
+  }
+
+  .showcase-copy-title {
+    max-width: 9ch;
+    font-size: clamp(1rem, 5vw, 1.2rem);
+  }
+
+  .showcase-copy-body,
+  .showcase-copy-point {
+    font-size: .74rem;
+  }
+
+  .showcase-copy-points {
+    gap: 8px;
+  }
+
+  .showcase-arrow {
+    width: 44px;
+    height: 44px;
+  }
+
+  .showcase-arrow-next {
+    right: 10px;
+    bottom: 10px;
+    top: auto;
+  }
+
+  .section-showcase .hero-stage {
+    padding: 14px 10px 46px 96px;
+  }
+
+  .section-showcase .hero-mockup-wrap {
+    margin-right: -44px;
+  }
+
+  .section-showcase .hero-screen.is-current {
+    transform: translate3d(-50%, -50%, 98px) rotate(-6deg) scale(.98);
+  }
+
+  .section-showcase .hero-screen.is-next {
+    opacity: .66;
+    transform: translate3d(-10%, -54%, 18px) rotate(8deg) scale(.48);
+  }
+
+  .section-showcase .hero-screen.is-prev,
+  .section-showcase .hero-screen.is-back {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .download-film .download-card > p:not(.eyebrow) {
+    max-width: none;
+    font-size: .92rem;
+  }
+
+  .download-film {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 14px;
+    overflow: hidden;
+  }
+
+  .download-stage {
+    order: 2;
+    min-height: 220px;
+  }
+
+  .download-film .download-card {
+    order: 1;
+    max-width: none;
+  }
+
+  .download-film .download-card h2 {
+    max-width: 9ch;
+    font-size: clamp(1.72rem, 10vw, 2.2rem);
+    text-wrap: balance;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero {
+    --hero-visual-scale: clamp(.42, calc(.14 + .08vw), .56);
+  }
+
+  .hero-layout {
+    min-height: clamp(340px, 122vw, 430px);
+  }
+
+  .hero-content {
+    left: 10px;
+    max-width: min(78vw, 228px);
+  }
+
+  .hero-content h1 {
+    max-width: 6.8ch;
+    font-size: 1.48rem;
+    letter-spacing: -.05em;
+  }
+
+  .hero-content h1 span {
+    white-space: normal;
+    text-wrap: balance;
+  }
+
+  .hero-overlay-main {
+    left: 48%;
+    width: min(72%, 290px);
+  }
+
+  .section-head h2 {
+    font-size: clamp(1.34rem, 8.8vw, 1.56rem);
+  }
+
+  .section-showcase .hero-stage {
+    padding-left: 88px;
+  }
+
+  .showcase-copy-panel {
+    width: min(64vw, 220px);
+  }
+}

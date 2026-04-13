@@ -262,6 +262,7 @@
   let showcaseMotionVisible = false;
   let showcaseAtRest = false;
   let showcasePointerFrame = 0;
+  const showcaseAutoRotateMinWidth = 680;
   let sectionNavLocked = false;
   let sectionNavTimer = null;
 
@@ -446,7 +447,11 @@
   function startShowcaseAutoRotate() {
     window.clearInterval(showcaseAutoRotate);
 
-    if (reducedMotionQuery.matches || showcasePanels.length < 2) return;
+    if (
+      reducedMotionQuery.matches ||
+      showcasePanels.length < 2 ||
+      window.innerWidth < showcaseAutoRotateMinWidth
+    ) return;
 
     showcaseAutoRotate = window.setInterval(() => {
       if (showcaseHovered || scrollMotionPaused || !showcaseMotionVisible || document.hidden) return;
