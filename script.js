@@ -121,7 +121,7 @@
 
   function getHeroBaseTransform() {
     if (window.innerWidth <= 640) {
-      return 'perspective(1400px) rotateX(5deg) rotateY(-6deg) rotateZ(-1.1deg)';
+      return 'perspective(1200px) rotateX(3deg) rotateY(-4deg) rotateZ(-.7deg)';
     }
 
     if (window.innerWidth <= desktopSceneMinWidth) {
