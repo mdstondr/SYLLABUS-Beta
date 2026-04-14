@@ -1,0 +1,18 @@
+{
+  "name": "Syllabus",
+  "short_name": "Syllabus",
+  "description": "Syllabus buendelt Aufgaben, Notizen, Deadlines und Lernplanung fuer ein organisiertes Studium.",
+  "start_url": "/SYLLABUS-Beta/",
+  "scope": "/SYLLABUS-Beta/",
+  "display": "standalone",
+  "background_color": "#09090b",
+  "theme_color": "#09090b",
+  "icons": [
+    {
+      "src": "/SYLLABUS-Beta/assets/branding/syllabus_icon.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

@@ -2,7 +2,7 @@
   'use strict';
 
   const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const desktopSceneMinWidth = 1100;
+  const storyInteractionMinWidth = 1100;
   const ambientMotionMinWidth = 0;
 
   const body = document.body;
@@ -48,6 +48,32 @@
     header.classList.toggle('hero-passed', heroBottom <= headerThreshold);
   }
 
+  function syncHashTargetPosition() {
+    if (!window.location.hash) return;
+
+    let target = null;
+
+    try {
+      target = document.querySelector(window.location.hash);
+    } catch (error) {
+      return;
+    }
+
+    if (!target) return;
+
+    const headerOffset = (header?.offsetHeight || 0) + 16;
+    const nextTop = Math.max(
+      0,
+      target.getBoundingClientRect().top + window.scrollY - headerOffset
+    );
+
+    window.scrollTo({
+      top: nextTop,
+      left: 0,
+      behavior: 'auto',
+    });
+  }
+
   function markResizeActivity() {
     body?.classList.add('is-resizing');
     window.clearTimeout(resizeStateTimer);
@@ -65,6 +91,19 @@
     scheduleHeaderSync();
   }, { passive: true });
   syncHeaderScrollState();
+  window.addEventListener('hashchange', () => {
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(syncHashTargetPosition);
+    });
+  });
+  window.addEventListener('load', () => {
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
+        syncHashTargetPosition();
+        window.setTimeout(syncHashTargetPosition, 180);
+      });
+    });
+  }, { once: true });
 
   if (keyboardHint) {
     document.addEventListener('keydown', (event) => {
@@ -675,7 +714,7 @@
     const storyRatios = new Map(storyActs.map((act, index) => [act, index === 0 ? 1 : 0]));
 
     const syncCurrentStoryAct = () => {
-      if (window.innerWidth <= desktopSceneMinWidth) {
+      if (window.innerWidth <= storyInteractionMinWidth) {
         storyActs.forEach((act) => act.classList.add('is-current'));
         return;
       }
@@ -709,7 +748,7 @@
     if (!stack) return;
 
     visual.addEventListener('mousemove', (event) => {
-      if (window.innerWidth < desktopSceneMinWidth || reducedMotionQuery.matches) return;
+      if (window.innerWidth < storyInteractionMinWidth || reducedMotionQuery.matches) return;
 
       const rect = visual.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
